@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+        crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            height: 100%;
+            width: 100%;
+
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        p {
+            margin: 0;
+            padding: 0;
+        }
+
+        .main-info-card {
+            width: 50%;
+            margin: auto;
+        }
+
+        .studentdashbaord {
+            padding: 40px;
+
+
+            box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+            margin-top: 40px;
+            border-top: 5px solid #958ded;
+            border-bottom: 5px solid #958ded;
+            border-radius: 5px 5px 0px 0px;
+
+        }
+
+        .student-info-card {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        .student-card {
+
+            margin-bottom: 20px;
+        }
+
+        /* .student-card input[type='radio'] {
+            margin: 0px 10px;
+        } */
+
+        .info-card {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background-color: #827ad8;
+            border: 5px solid #958ded;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 25px;
+            color: rgb(245, 245, 245);
+        }
+
+        .status {
+            display: flex;
+            justify-content: space-between;
+
+            margin: auto;
+            position: relative;
+            margin-top: 20px;
+
+        }
+
+        .status::before {
+            content: "";
+            width: 30%;
+            height: 4px;
+            border-radius: 10px;
+            background-color: #7870cf;
+            top: 40px;
+            left: 0;
+
+            z-index: -1;
+            position: absolute;
+            display: block;
+            transition: all 0.5s ease-in-out;
+        }
+
+        /* .status::before.changed-width {
+            width: 50%;
+        } */
+
+        .status::after {
+            content: "";
+            width: 100%;
+            height: 4px;
+            border-radius: 10px;
+            background-color: rgb(187, 187, 187);
+            top: 40px;
+            left: 0;
+            z-index: -2;
+            position: absolute;
+            display: block;
+        }
+
+        .signup-label-card {
+            text-align: center;
+            margin-top: 60px;
+        }
+
+        .signup-label-card h2 {
+            font-size: 30px;
+            color: rgb(78, 72, 149);
+            font-weight: 700;
+        }
+
+        .signup-label-card p {
+            font-size: 17px;
+            color: rgb(147, 147, 147);
+        }
+
+        .studenttitle-card {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .studenttitle-card h2 {
+            font-size: 25px;
+            color: rgb(78, 72, 149);
+            font-weight: 600;
+
+        }
+
+        .studenttitle-card h6 {
+            font-size: 20px;
+            color: #246c3c;
+        }
+
+        .action-button {
+            background-color: rgb(78, 72, 149);
+            color: #fff;
+            padding: 10px 30px;
+            outline: 0;
+            border: 0px;
+
+
+
+        }
+
+        .step-one-btn {
+            display: flex;
+            justify-content: end;
+        }
+
+        .studentdashbaord.active {
+            display: block;
+        }
+
+        .studentdashbaord {
+            display: none;
+        }
+
+        .documents-main-card {
+            margin-bottom: 20px;
+        }
+
+        .profile-icon {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 5px solid #958ded;
+            overflow: hidden;
+
+        }
+
+        .profile-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .profile-img h2 {
+            font-size: 20px;
+            margin-top: 10px;
+            color: rgb(78, 72, 149);
+            font-weight: 600;
+        }
+
+        .profile-img {
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .profiledashboard.active {
+            display: block;
+        }
+
+        .profiledashboard {
+            display: none;
+        }
+
+        .documentdashboard.active {
+            display: block;
+        }
+
+        .documentdashboard {
+            display: none;
+        }
+
+        .profiledashboard.active {
+            display: block;
+        }
+
+        .profiledashboard {
+            display: none;
+        }
+
+
+        .documentdashboard {
+            padding: 40px;
+            box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+            margin-top: 40px;
+            border-top: 5px solid #958ded;
+            border-bottom: 5px solid #958ded;
+            border-radius: 5px;
+
+        }
+
+        .profiledashboard {
+            padding: 40px;
+            box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+            margin-top: 40px;
+            border-top: 5px solid #958ded;
+            border-bottom: 5px solid #958ded;
+            border-radius: 5px;
+        }
+
+        .documentdashboard p {
+            margin-bottom: 5px;
+        }
+
+        .gender-card input[type="radio"] {
+            margin-right: 10px;
+        }
+
+        .gender-card input[type="radio"]:nth-of-type(2) {
+            margin-left: 20px;
+        }
+
+        .step-one-btn .action-button {
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+        .step-one-btn .action-button:nth-of-type(1) {
+            margin-right: 20px;
+
+        }
+
+        .student-card p {
+            margin-bottom: 5px;
+        }
+
+        .profile-information p {
+            line-height: 1.8;
+            font-weight: 600;
+            color: #645f9e;
+
+        }
+
+        .profile-info-content {
+            display: flex;
+            align-items: center;
+        }
+
+        .profile-info-content p:nth-of-type(1) {
+            flex-basis: 150px;
+        }
+
+        .profile-info-content span {
+            color: rgb(125, 125, 125);
+        }
+
+        .sucessful-icon {
+            text-align: center;
+        }
+
+        .sucessful-content h2 {
+            font-size: 25px;
+            color: #645f9e;
+            text-align: center;
+
+        }
+
+        .sucessful-content p {
+            color: rgb(107, 107, 107);
+            font-size: 18px;
+            text-align: center;
+        }
+
+        .sucessful-card {
+            padding: 20px;
+            padding-bottom: 40px;
+            box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+            border: 5px solid #958ded;
+            border-radius: 5px;
+        }
+
+        .sucessful-content .next {
+
+            display: flex;
+            margin: auto;
+            margin-top: 20px;
+            border-radius: 5px;
+
+        }
+
+        .sucessful-card {
+            display: none;
+            margin-top: 70px;
+        }
+
+        .sucessful-card.active {
+            display: block;
+            margin-top: 70px;
+        }
+
+        .main-signup-card {
+            display: none;
+        }
+
+        .main-signup-card.active {
+            display: block;
+        }
+
+        .student-card sup {
+            color: red;
+        }
+
+        .documents-main-card sup {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="main-info-card">
+
+        <div class="main-signup-card active">
+            <div class="signup-label-card">
+                <h2> SIGN UP YOUR USER ACCOUNT</h2>
+                <p> Fill all form field to go to next step</p>
+            </div>
+
+            <div class="status">
+                <div class="info-card">
+                    <div class="info-icon">
+                        <i class="fa-solid fa-user"></i>
+                    </div>
+                </div>
+
+                <div class="info-card">
+                    <div class="info-icon">
+                        <i class="fa-solid fa-file"></i>
+                    </div>
+                </div>
+
+
+                <div class="info-card">
+                    <div class="info-icon">
+                        <i class="fa-solid fa-thumbs-up"></i>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <!-- STEP 1 -->
+
+        <div class="studentdashbaord active">
+
+            <div class="studenttitle-card">
+                <h2>Student Information</h2>
+
+                <h6>Step 1</h6>
+
+            </div>
+
+            <div class="student-info-card">
+                <form class="stepformone">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="student-card">
+                                <p>Name<sup>*</sup></p>
+                                <input type="text" class="form-control" id="name" required>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <div class="student-card">
+                                <p>Email<sup>*</sup></p>
+                                <input type="text" class="form-control" id="email" required>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="student-card">
+                                <p>Phone<sup>*</sup></p>
+                                <input type="text" class="form-control" id="phone" required>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="student-card">
+                                <p>Address<sup>*</sup></p>
+                                <input type="text" class="form-control" id="loc" required>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="student-card gender-card">
+                                <p>Gender<sup>*</sup></p>
+                                  <input type="radio" id="gender" name="gender" value="male" checked>Male
+                                <input type="radio" id="gender" name="gender" value="Female">Female
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="student-card">
+                                <p>Degree<sup>*</sup></p>
+                                <input type="text" id="degree" class="form-control" id="degree" required>
+                            </div>
+                        </div>
+
+                        <div class="step-one-btn">
+
+                            <input type="button" id="next" class="next action-button" value="Next" />
+                        </div>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+
+
+
+        <!-- STEP 2 -->
+
+        <div class="documentdashboard">
+
+            <div class="studenttitle-card">
+                <h2>Students Documents</h2>
+
+                <h6>Step 2</h6>
+
+            </div>
+
+            <div class="documents-card">
+                <div class="documents-main-card">
+                    <p>Profile Image</p>
+                    <input type="file" id="profileimg" class="form-control" required>
+                </div>
+
+              
+
+                <div class="step-one-btn">
+                    <input type="button" id="stepprevtwo" class="next action-button" value="Previous" />
+                    <input type="button" id="steptwo" class="next action-button" value="Next" />
+                </div>
+            </div>
+
+        </div>
+
+
+        <!-- STEP 3 -->
+
+        <div class="profiledashboard">
+
+            <div class="studenttitle-card">
+                <h2>Profile</h2>
+
+                <h6>Step 3</h6>
+
+            </div>
+
+            <div class="profile-card">
+
+                <div class="profile-img">
+                    <div class="profile-icon">
+                        <img src="demo.jpg" id="iconimg" class="img-fluid" alt="">
+                    </div>
+                    <h2 id="nameinfo"></h2>
+                </div>
+
+                <div class="profile-information">
+
+                    <div class="profile-info-content">
+                        <p>Student Email: </p><span id="emailinfo"></span>
+                    </div>
+                    <div class="profile-info-content">
+                        <p>Student Phone:</p> <span id="phoneinfo"></span>
+                    </div>
+                    <div class="profile-info-content">
+                        <p>Student Address:</p><span id="addressinfo"></span>
+                    </div>
+                    <div class="profile-info-content">
+                        <p>Student Gender: </p><span id="genderinfo"></span>
+                    </div>
+                    <div class="profile-info-content">
+                        <p>Student Degree: </p><span id="degreeinfo"></span>
+                    </div>
+
+
+                </div>
+            </div>
+
+
+
+
+
+            <div class="step-one-btn">
+                <input type="button" id="stepthreeprev" class="next action-button" value="Previous" />
+                <input type="button" id="stepthree" class="next action-button" value="Submit" />
+            </div>
+
+        </div>
+
+        <div class="sucessful-card">
+            <div class="sucessful-icon">
+                <img src="" alt="">
+
+                <lord-icon src="https://cdn.lordicon.com/tqywkdcz.json" trigger="loop"
+                    colors="primary:#7166ee,secondary:#f28ba8,tertiary:#ffc738,quaternary:#f24c00"
+                    style="width:250px;height:250px">
+                </lord-icon>
+            </div>
+            <div class="sucessful-content">
+                <h2>Successfully completed registration</h2>
+                <p>Our team will be in touch with you soon.</p>
+                <input type="button" id="sucessbtn" class="next action-button" value="Close" />
+            </div>
+        </div>
+        <script src="https://cdn.lordicon.com/bhenfmcm.js"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script>
+            var $name = $('#name'),
+                $email = $('#email'),
+                $phone = $('#phone'),
+                $address = $('#loc'),
+                $gender = $('#gender'),
+                $degree = $('#degree'),
+                $steponebtn = $('#next'),
+                $steptwobtn = $('#steptwo'),
+                $stepthreebtn = $('#stepthree'),
+                $steptwoprevbtn = $('#stepprevtwo'),
+                $stepthreeprevbtn = $('#stepthreeprev'),
+                $namecon = $('#nameinfo'),
+                $emailcon = $('#emailinfo'),
+                $phonecon = $('#phoneinfo'),
+                $gendercon = $('#genderinfo'),
+                $degreecon = $('#degreeinfo'),
+                $addresscon = $('#addressinfo');
+            $sucesscard = $('.sucessful-card');
+            $profileimg = $('#profileimg');
+            $iconcon = $('#iconimg');
+            $signup = $('.main-signup-card');
+            $sucessbtn = $('#sucessbtn');
+
+
+            $status = $(".status");
+            var beforeElement = $('.status::before');
+
+
+
+
+
+            $steponecard = $('.studentdashbaord');
+            $steptwocard = $('.documentdashboard');
+            $stepthirdcard = $('.profiledashboard');
+
+            $profileimg.change(function () {
+
+                var file = this.files[0];
+                if (file) {
+                    var reader = new FileReader();
+
+
+                    reader.onload = function (e) {
+
+                        $('#iconimg').attr('src', e.target.result);
+
+                    }
+
+
+                    reader.readAsDataURL(file);
+                }
+
+                else {
+
+                }
+
+            })
+
+
+
+
+            $(document).ready(function () {
+
+
+             
+
+                
+                var $steponebtn = $('#next');
+                var $requiredInputs = $('.stepformone .form-control[required]');
+
+                $steponebtn.click(function (e) {
+                    var isValid = true;
+                    $requiredInputs.each(function () {
+                        if ($(this).val() === '') {
+                            isValid = false;
+                            $(this).addClass('invalid');
+                        } else {
+                            $(this).removeClass('invalid');
+                        }
+                    });
+
+                    if (!isValid) {
+                        e.preventDefault();
+                        alert('Please fill in all required fields.');
+                    } 
+                    else {
+                        $steponecard.removeClass("active");
+                        $steptwocard.addClass("active");
+                        var style = document.createElement('style');
+                        style.innerHTML = '.status::before { width: 60%; }';
+
+
+                        document.head.appendChild(style);
+                    }
+
+
+
+
+
+
+                });
+
+            
+                $steptwobtn.click(function (e) {
+
+                    $steptwocard.removeClass("active");
+                    $stepthirdcard.addClass("active");
+                    $namecon.html($name.val());
+                    $emailcon.html($email.val());
+                    $phonecon.html($phone.val());
+                    $addresscon.html($address.val());
+                    $gendercon.html($gender.val());
+                    $degreecon.html($degree.val());
+                    var style = document.createElement('style');
+                    style.innerHTML = '.status::before { width: 100%;  }';
+
+                    document.head.appendChild(style);
+                    // var fileInput = $("#profileimg")[0];
+                    // var selectedFile = fileInput.files[0];
+                    // var fileName = selectedFile.name;
+                    // console.log(fileName);
+                    // console.log(selectedFile);
+
+
+
+
+                    console.log(file);
+
+                    // Check if a file is selected
+
+
+
+
+
+
+
+                });
+            });
+            $sucessbtn.click(function (e) {
+                location.reload();
+            })
+            $stepthreebtn.click(function (e) {
+                $stepthirdcard.removeClass("active");
+                $sucesscard.addClass("active");
+                $signup.removeClass('active');
+
+
+
+            })
+
+            $steptwoprevbtn.click(function (e) {
+                $steptwocard.removeClass("active");
+                $steponecard.addClass("active");
+                var style = document.createElement('style');
+                style.innerHTML = '.status::before { width: 30%; }';
+
+
+                document.head.appendChild(style);
+            });
+
+            $stepthreeprevbtn.click(function (e) {
+                $stepthirdcard.removeClass("active");
+                $steptwocard.addClass("active");
+                var style = document.createElement('style');
+                style.innerHTML = '.status::before { width: 60%; }';
+                document.head.appendChild(style);
+            });
+
+        </script>
+
+</body>
+
+</html>
